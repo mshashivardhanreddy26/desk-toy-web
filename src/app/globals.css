@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+/* 🌗 High-Contrast Dark Variant */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #09090b; /* Zinc-950 (Sharp Readability) */
+    --card: #ffffff;
+    --card-foreground: #09090b;
+    --muted: #f4f4f5;
+    --muted-foreground: #71717a; /* Zinc-500 */
+    --border: #e4e4e7; /* Zinc-200 */
+    --accent: #00ff88;
+  }
+
+  .dark {
+    --background: #050505;
+    --foreground: #fafafa;
+    --card: #09090b;
+    --card-foreground: #fafafa;
+    --muted: #18181b;
+    --muted-foreground: #a1a1aa;
+    --border: rgba(255, 255, 255, 0.08);
+    --accent: #00ff88;
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  transition-property: background-color, color, border-color;
+  transition-duration: 300ms;
+}
+
+/* 🎨 Premium Design Utilities */
+.glass-card {
+  @apply bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-white/10 shadow-sm dark:shadow-none;
+}
+
+.text-sharp {
+  @apply text-zinc-950 dark:text-zinc-50;
+}
+
+.text-dim {
+  @apply text-zinc-500 dark:text-zinc-400;
+}
+
+/* Hide scrollbars but keep functionality */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
