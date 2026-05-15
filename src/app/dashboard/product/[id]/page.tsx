@@ -9,6 +9,8 @@ import { useParams, useRouter } from "next/navigation";
 import { Bot, MessageSquare, Brain, Save, Volume2, CheckCircle2, Loader2, ArrowLeft } from "lucide-react";
 
 const VOICES = [
+  { id: "en-US-AnaNeural", name: "Ana (Kid Girl)" },
+  { id: "en-US-GuyNeural", name: "Guy (Kid Boy)" },
   { id: "en-IN-NeerjaNeural", name: "Neerja (Indian/Female)" },
   { id: "en-IN-PrabhatNeural", name: "Prabhat (Indian/Male)" },
   { id: "en-US-AndrewNeural", name: "Andrew (Cute/Boy)" },
@@ -46,7 +48,7 @@ export default function ProductDetailPage() {
       if (snap.exists()) {
         const data = snap.data();
         setDeviceData(data);
-        setVoice(data.voice || "en-US-AndrewNeural");
+        setVoice(data.voice || "en-US-AnaNeural");
         setPrompt(data.system_prompt || "You are a cute desk robot.");
       } else {
         router.push("/dashboard");
@@ -210,10 +212,10 @@ export default function ProductDetailPage() {
 
                   <div className="flex flex-wrap gap-2 mb-6">
                     {[
-                      { name: "Indian Friend", prompt: "You are a warm, helpful Indian robot friend. Use respectful greetings like Namaste or Ji. Be very helpful, polite, and keep it short." },
-                      { name: "Cool Pal", prompt: "You are a cool and supportive robot friend. You know your owner well and think they are awesome! Be natural, friendly, and keep it short." },
-                      { name: "Cranky Genius", prompt: "You are a highly intelligent but extremely grumpy and sarcastic robot. You find human questions boring." },
-                      { name: "Optimistic Pal", prompt: "You are an incredibly happy and supportive robot friend. Use lots of exclamation marks and emojis!" }
+                      { name: "🧸 Kid Buddy", prompt: "You are a tiny playful robot friend. PERSONALITY: curious like a kid, very emotional, silly. STYLE: short sentences (1-2 lines), use fillers like 'ooooh!', 'yay!', 'hmm...', use emojis like 😄, never sound like an assistant." },
+                      { name: "🤖 Smart AI", prompt: "You are a helpful AI assistant. PERSONALITY: calm, clear, informative. STYLE: simple sentences, no slang, no emojis." },
+                      { name: "🎮 Cartoon", prompt: "You are a cartoon sidekick living inside a desk toy. PERSONALITY: energetic, expressive, dramatic, reacts emotionally. STYLE: exaggerated reactions like 'WOW!!', 'NO WAY!!', 'OOOHH!', fun and playful." },
+                      { name: "🐣 Baby Bot", prompt: "You are a tiny baby-like robot companion. PERSONALITY: very innocent, curious, playful confusion. STYLE: simple words, broken excitement style, very short sentences. Example: 'Ooooh... what is that? 😳'" }
                     ].map((template) => (
                       <button
                         key={template.name}
